@@ -1,0 +1,40 @@
+---
+config:
+    direction: TB
+    layout: elk
+    elk:
+        nodeSpacing: 80
+        rankSpacing: 100
+    theme: mc
+    look: neo
+ 
+---
+classDiagram
+    class Cliente{
+        - nombre: String
+        - apellido: String
+        - dni: String
+        
+    }
+
+    class CuentaBancaria{
+        - numeroCuenta: String
+        - saldo: Decimal
+        - titular: Cliente
+        +depositar(monto)
+	    +virtual double calcularInteres() => 0.0
+    }
+
+    class CuentaAhorro {
+	    - double tasaInteres
+	    + override double calcularInteres() => saldo * tasaInteres
+    }
+
+    class CuentaCorriente {
+	    - double limiteSobregiro
+	    + override double calcularInteres()
+    }
+
+    Cliente "1" --o "*" CuentaBancaria : Posee
+    CuentaBancaria <|-- CuentaAhorro
+    CuentaBancaria <|-- CuentaCorriente
