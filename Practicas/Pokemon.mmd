@@ -1,18 +1,63 @@
 ---
 config:
-    direction: TB
+    direction: LR
     layout: elk
-    elk:
-        nodeSpacing: 80
-        rankSpacing: 100
     theme: mc
     look: neo
  
 ---
 
 classDiagram
+    class Pokemon["Pokemon"] {
+        -string nombre
+        -string tipo
+        -int nivel
+        -int vida
+        -string especie
+        -int ataque
+        -int defensa
+        +Pokemon(nombre, tipo, nivel, vida, especie, ataque, defensa)
+        +TipoAtaque() void
+        +PokeDesc() string
+        +Atacar(enemigo: Pokemon) int
+        +RecibirDanio(cantidad: int) void
+    }
 
-    Pokemon : - nombre String
-    Pokemon : - tipo String
-    Pokemon : - nivel Int
-    Pokemon : - vida Int
+    class PokemonAgua["PokemonAgua"] {
+        -string debilidad
+        -string inmunidad
+        +PokemonAgua(nombre, tipo, nivel, vida, especie, ataque, defensa)
+        +TipoAtaque() void
+    }
+
+    class PokemonElectrico["PokemonElectrico"] {
+        -string debilidad
+        -string inmunidad
+        +PokemonElectrico(nombre, tipo, nivel, vida, especie, ataque, defensa)
+    }
+
+    class PokemonFuego["PokemonFuego"] {
+        -string debilidad
+        -string inmunidad
+        +PokemonFuego(nombre, tipo, nivel, vida, especie, ataque, defensa)
+        +TipoAtaque() void
+        +PokeDesc() string
+    }
+
+    class PokemonPlanta["PokemonPlanta"] {
+        -string debilidad
+        -string inmunidad
+        +PokemonPlanta(nombre, tipo, nivel, vida, especie, ataque, defensa)
+    }
+
+    class PokemonTierra["PokemonTierra"] {
+        -string debilidad
+        -string inmunidad
+        +PokemonTierra(nombre, tipo, nivel, vida, especie, ataque, defensa)
+    }
+
+    Pokemon <|-- PokemonAgua
+    Pokemon <|-- PokemonElectrico
+    Pokemon <|-- PokemonFuego
+    Pokemon <|-- PokemonPlanta
+    Pokemon <|-- PokemonTierra
