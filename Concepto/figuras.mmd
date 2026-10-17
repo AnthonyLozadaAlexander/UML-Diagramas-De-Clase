@@ -1,7 +1,7 @@
 ---
 config:
     layout: elk
-    elk:
+    elk    :
         mergeEdges: true  
         nodeSpacing: 70
         rankSpacing: 80
@@ -13,8 +13,8 @@ config:
 flowchart
     A([Inicio]) --> B("Accion Activada")
     B --> C{ Es Valido? } 
-    C --> |No| E[[Detener Proceso]]
-    C --> |Si| D[[Continuar Proceso]] 
+    C -- No -->  E[[Detener Proceso]]
+    C -- Si -->  D[[Continuar Proceso]] 
     E --> F
     D --> F
     F([Fin])
