@@ -1,0 +1,22 @@
+---
+config:
+    layout: elk
+    elk:
+        mergeEdges: true  
+        nodeSpacing: 70
+        rankSpacing: 80
+    flowchart:
+        curve: linear
+    theme: mc
+    look: neo
+---
+flowchart
+    A([Inicio]) --> B("Accion Activada")
+    B --> C{ Es Valido? } 
+    C --> |No| E[[Detener Proceso]]
+    C --> |Si| D[[Continuar Proceso]] 
+    E --> F
+    D --> F
+    F([Fin])
+    
+    
